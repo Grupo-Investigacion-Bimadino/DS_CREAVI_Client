@@ -27,5 +27,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  app: {
+    baseURL: "/v1/",
+    cdnURL: "/"
+  }
 })
 

@@ -1,17 +1,18 @@
 <template>
     <div>
-        Commander
-
-        <v-btn icon="mdi-microphone" @click="initSpeechRecognize"></v-btn>
-        <v-btn icon="mdi-microphone-off" @click="toggle"></v-btn>
-        {{ isListening }}
+        <v-btn variant="outlined" icon="mdi-microphone" @click="toggle"></v-btn>
     </div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-
-// call speech recognition controls
 import { toggle, initSpeechRecognize, isListening } from '@/components/Speech/commands'
 
+onMounted(() => {
+    initSpeechRecognize()
+})
+
+watch(isListening, (newVal) => {
+    console.log('isListening', newVal)
+})
 </script>
 <style scoped></style>

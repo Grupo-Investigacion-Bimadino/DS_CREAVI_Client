@@ -1,11 +1,15 @@
 import { ref, watch } from 'vue-demi'
-import type { SpeechRecognition } from './types'
+import type { SpeechRecognition, SpeechGrammarList } from './types'
 
 export var isListening = ref(false);
 export var lastCommand = ref("");
-export let recognition: SpeechRecognition;
+export var lang = ref("es-ES");
+export var recognition: SpeechRecognition;
+export var speechRecognitionList: SpeechGrammarList;
+export var grammar: "#JSGF V1.0; grammar commands; public <command> = hola isabella | adiós isabella | hola isabela | adios isabela;"
 
 const SpeechRecognition = window && ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition)
+const SpeechGrammarList = window && ((window as any).SpeechGrammarList || (window as any).webkitSpeechGrammarList)
 
 export const toggle = () => {
     console.log("toggle");
@@ -16,8 +20,10 @@ export const initSpeechRecognize = () => {
     console.log("Start lisnening");
 
     recognition = new SpeechRecognition() as SpeechRecognition
+    speechRecognitionList = new SpeechGrammarList();
+    speechRecognitionList.addFromString(grammar, 1);
     recognition.continuous = true;
-    recognition.lang = "es-ES";
+    recognition.lang = lang.value;
 
     recognition.onresult = (event) => {
         console.log("onresult", event.results[0][0])

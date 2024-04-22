@@ -15,7 +15,7 @@ interface SpeechGrammar {
     weight: number
 }
 
-interface SpeechGrammarList {
+export interface SpeechGrammarList {
     readonly length: number
     addFromString: (string: string, weight?: number) => void
     addFromURI: (src: string, weight?: number) => void

@@ -9,7 +9,6 @@
 </template>
 <script setup>
 import { ElementsETParagraph, ElementsETDefault } from '#components';
-// import { CSelect, CContent, CDefault, CWidthComponent } from "#components";
 // import { usePropertiePanelStore } from "~/store/propertiePanel";
 
 // const propertiePanelStore = usePropertiePanelStore();

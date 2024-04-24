@@ -1,13 +1,13 @@
 <template>
     <div>
         <v-row no-gutters>
-            <v-col cols="12" sm="4">
+            <v-col cols="12" sm="6">
                 <ElementsCodeEditor v-model="code" />
             </v-col>
             <v-col cols="12" sm="3">
                 Propiedades
             </v-col>
-            <v-col cols="12" sm="5">
+            <v-col cols="12" sm="3">
                 <ElementsRender :element="element" />
             </v-col>
         </v-row>

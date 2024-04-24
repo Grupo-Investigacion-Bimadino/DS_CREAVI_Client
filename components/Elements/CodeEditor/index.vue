@@ -1,16 +1,11 @@
 <template>
     <v-row class="pa-1 ma-1">
         <v-col cols="12" sm="12">
-            <v-textarea label="JS" rows="7" variant="outlined" auto-grow shaped v-model="code"></v-textarea>
+            <ElementsCodeEditorBarBtns @save="saveElement" @reset="reset" />
         </v-col>
         <v-col cols="12" sm="12">
-            <v-card variant="outlined">
-                <v-card-actions>
-                    <v-btn @click="saveElement">Save</v-btn>
-                    <v-btn @click="code = codeTeplate">Reset</v-btn>
-                </v-card-actions>
-            </v-card>
-        </v-col>
+            <v-textarea label="JS" rows="7" variant="outlined" auto-grow shaped v-model="code"></v-textarea>
+        </v-col>        
         <v-row>
             <v-col cols="12" sm="12">
                 <ElementsList />
@@ -46,11 +41,13 @@ const code = ref(codeTeplate)
 const saveElement = async () => {
     try {
         const elementData = JSON.parse(code.value);
-        let newElement = await elementStore.createElement(elementData);
-        // console.log(newElement);
+        await elementStore.createElement(elementData);        
     } catch (error) {
         console.error('Error parsing JSON:', error);
     }
+}
+const reset = () => {
+    code.value = codeTeplate;
 }
 
 </script>

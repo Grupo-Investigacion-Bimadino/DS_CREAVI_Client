@@ -1,19 +1,17 @@
-
-
-interface Element {
-    _id: string,
-    name: string,
-    version: string,
-    type: string,
-    properties: {},
-    data: {},
-    components: [],
-    createdBy: string,
-    trunk: string,
-    versions: []
-}
-
 export const useMiscellaneous = () => {
+
+    interface Element {
+        _id: string,
+        name: string,
+        version: string,
+        type: string,
+        properties: {},
+        data: {},
+        components: [],
+        createdBy: string,
+        trunk: string,
+        versions: []
+    }
 
     const config = useRuntimeConfig();
     const API_BASE_URL = config.public.API_BASE_URL;

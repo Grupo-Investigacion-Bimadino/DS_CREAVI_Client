@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-card class="mx-auto" variant="outlined">
+        <v-card variant="outlined">
             <v-list :items="items" item-title="name" item-value="_id" v-model:selected="selectedElement"></v-list>
         </v-card>
     </div>

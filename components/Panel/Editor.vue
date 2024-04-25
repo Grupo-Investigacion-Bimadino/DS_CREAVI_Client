@@ -1,19 +1,17 @@
 <template>
-  <div class="btn-editor ma-1 pa-2">
-    <v-btn color="grey-lighten-2" icon @click.stop="toggleShowProperties" class="elevation-0 rounded-lg" size="x-small"
-      variant="outlined">
-      <v-icon color="amber-darken-1">mdi-pencil</v-icon>
-    </v-btn>
-    <v-btn color="grey-lighten-2" icon @click.stop="updatePropertiesOnElementPanel" class="elevation-0 rounded-lg"
-      size="x-small" variant="outlined">
-      <v-icon color="amber-darken-1">mdi-pencil</v-icon>
-    </v-btn>
+  <v-card class="btn-editor ma-0 pa-0">
+    <v-card-actions>
+      <v-btn color="grey-lighten-2" icon @click.stop="updatePropertiesOnElementPanel" class="elevation-0 rounded-lg"
+        size="x-small" variant="outlined">
+        <v-icon color="amber-darken-1">mdi-pencil</v-icon>
+      </v-btn>
 
-    <v-btn color="grey-lighten-2" icon @click="saveChanges" class="elevation-0 rounded-lg" size="x-small"
-      variant="outlined">
-      <v-icon color="green-darken-1">mdi-content-save</v-icon>
-    </v-btn>
-  </div>
+      <v-btn color="grey-lighten-2" icon @click="saveChanges" class="elevation-0 rounded-lg" size="x-small"
+        variant="outlined">
+        <v-icon color="green-darken-1">mdi-content-save</v-icon>
+      </v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script setup>
@@ -30,12 +28,9 @@ const props = defineProps({
   },
 });
 
+
 const updatePropertiesOnElementPanel = () => {
   appPropertiePannel.setElementTemp(props.element);
-  appStore.toggleShowProperties();
-};
-
-const toggleShowProperties = () => {
   appStore.toggleShowProperties();
 };
 

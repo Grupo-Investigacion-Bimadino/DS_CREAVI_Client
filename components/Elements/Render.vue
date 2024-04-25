@@ -2,13 +2,13 @@
     <div>
         <div v-if="element" class="btn-editor-container" @mouseenter="onShowProperties"
             @mouseleave="isVisiblePanelButtons = false" v-bind="props">
-            <component :is="dynamicRenderElement(element.type)" :element="element" class="ma-1 pa-1" />                        
+            <component :is="dynamicRenderElement(element.type)" :element="element" class="ma-1 pa-1" />
             <PanelEditor v-if="isVisiblePanelButtons" :element="element" />
         </div>
     </div>
 </template>
 <script setup>
-import { ElementsETParagraph, ElementsETDefault } from '#components';
+import { ElementsETParagraph, ElementsETDefault, ElementsETSelect } from '#components';
 import { usePropertiePanelStore } from "~/store/propertiePanel";
 
 const propertiePanelStore = usePropertiePanelStore();
@@ -30,6 +30,7 @@ const dynamicRenderElement = (type) =>
 ({
     paragraph: ElementsETParagraph,
     default: ElementsETDefault,
+    select: ElementsETSelect,
 }[type]);
 
 </script>
@@ -39,7 +40,7 @@ const dynamicRenderElement = (type) =>
     position: relative;
 }
 
-.btn-editor-container:hover {    
+.btn-editor-container:hover {
     background-color: rgb(245, 255, 250, 0.1);
 }
 </style>

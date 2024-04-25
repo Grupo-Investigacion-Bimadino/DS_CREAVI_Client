@@ -10,12 +10,12 @@
                     <v-btn icon="mdi-dots-vertical" variant="text"></v-btn>
                 </v-app-bar>
                 <v-main>
-                    <MenuOptionsAside />
+                    <PanelPropertiesDialog />
                     <slot />
                 </v-main>
             </v-layout>
             <v-footer>
-                <div>{{ new Date().getFullYear() }} — <strong>Echo 4</strong></div>
+                <div>{{ new Date().getFullYear() }} — <strong>CREAVI</strong></div>
             </v-footer>
         </v-card>
     </v-app>

@@ -25,9 +25,6 @@ const elements = computed(() => elementStore.getStateElements);
 const code = ref('');
 const elementStore = useElementStore();
 
-onMounted(async () => {
-    // elements.value = await elementStore.getElements();
-    // element.value = await elementStore.getElement;
-})
+onMounted(async () => { })
 
 </script>

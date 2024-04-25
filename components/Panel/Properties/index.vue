@@ -1,34 +1,32 @@
 <template>
-  <v-card>
-    <!--v-tabs v-model="tab" centered>
+  <div>
+    <v-tabs v-model="tab" centered>
       <v-tab value="tab-1"> Propiedades </v-tab>
       <v-tab value="tab-2"> Componentes </v-tab>
-    </v-tabs-->
-
-    <!--v-window v-model="tab">
+      <v-spacer></v-spacer>
+      <v-btn size="small" icon="mdi-close" variant="text" class="ma-1" @click.stop="close"></v-btn>
+    </v-tabs>
+    <v-window v-model="tab">
       <v-window-item value="tab-1">
         <v-card>
           <v-card-text>
-            <v-list :title="`Propiedades del componente ${component.name}`" :subtitle="`v ${component.version}`">
-              <v-list-item v-for="(property, propertyName) in component.properties" :key="propertyName">
+            <v-list :title="`Propiedades del componente ${element.name}`" :subtitle="`v ${element.version}`">
+              <v-list-item v-for="(property, propertyName) in element.properties" :key="propertyName">
                 <div v-if="propertyName == 'width'">
-                  <CUnitInputField v-if="component.properties" :tempWidth="component.properties.width" @onChangeWidth="changeWidth" />
+                  <PanelPropertiesCUnitInputField v-if="elelment.properties" :tempWidth="elelment.properties.width"
+                    @onChangeWidth="changeWidth" />
                 </div>
                 <div v-else-if="propertyName == 'data' || propertyName == 'v_model' || propertyName == 'components'">
-                  <v-text-field :model-value="component.properties[propertyName]" :label="propertyName" disabled></v-text-field>
+                  <v-text-field :model-value="element.properties[propertyName]" :label="propertyName"
+                    disabled></v-text-field>
                 </div>
-                <div v-else-if="propertyName == 'items' && typeof component.properties[propertyName] == 'object'">
-                  <PropertieArray :property="component.properties[propertyName]" :field="propertyName" />
+                <div v-else-if="propertyName == 'items' && typeof element.properties[propertyName] == 'object'">
+                  <PanelPropertiesArray :property="element.properties[propertyName]" :field="propertyName" />
                 </div>
                 <div v-else>
-                  <component
-                    :is="getComponetByType(component.properties[propertyName])"
-                    v-model="component.properties[propertyName]"
-                    :label="propertyName"
-                    variant="outlined"
-                    class="pa-2"></component>
+                  <component :is="getComponetByType(typeof element.properties[propertyName])" :label="propertyName"
+                    variant="outlined" class="pa-2" />
                 </div>
-                <v-divider v-if="propertyName != 'data' && propertyName != 'v_model'" class="border-opacity-25"></v-divider>
               </v-list-item>
             </v-list>
             <v-card elevation="0" variant="outlined">
@@ -43,38 +41,38 @@
                   <v-btn id="copyButton" icon small class="copy-button ma-2">
                     <v-icon>mdi-content-copy</v-icon>
                   </v-btn>
-                  <pre id="codeText"><code class="language-js">{{ component }}</code></pre>
+                  <pre id="codeText"><code class="language-js">{{ element }}</code></pre>
                 </div>
               </v-expand-transition>
             </v-card>
           </v-card-text>
         </v-card>
-      </v-window-item-->
+      </v-window-item>
 
-    <!--v-window-item value="tab-2">
+      <v-window-item value="tab-2">
         <v-card max-width="600" class="mx-auto">
           <v-card-text>
             <div class="d-flex flex-column align-left">
               <v-btn-toggle mandatory>
-                <CBtnsBtnContent @onAddComponent="addComponent" />
-                <CBtnsBtCWidthComponent @onAddComponent="addComponent" />
+                <!--CBtnsBtnContent @onAddComponent="addComponent" />
+                <CBtnsBtCWidthComponent @onAddComponent="addComponent" /-->
               </v-btn-toggle>
             </div>
           </v-card-text>
         </v-card>
       </v-window-item>
-    </v-window-->
-  </v-card>
+    </v-window>
+  </div>
 </template>
 <script setup>
-// import { useAppStore } from "~/store/app";
-// const appStore = useAppStore();
+import { useAppStore } from "~/store/app";
+const appStore = useAppStore();
 // const showProperties = computed(() => appStore.getShowProperties);
 
+//import { PropertieArray, CWidthComponent, CBtnsBtCWidthComponent, CBtnsBtnContent, CRender, CUnitInputField } from "#components";
 
+import { ElementsETInputField, ElementsETSwitch } from "#components";
 
-
-/*import { PropertieArray, CWidthComponent, CBtnsBtCWidthComponent, CBtnsBtnContent, CRender, CUnitInputField } from "#components";
 import { usePropertiePanelStore } from "~/store/propertiePanel";
 
 import { ref, onMounted } from "vue";
@@ -86,7 +84,7 @@ const copyButtonId = "copyButton";
 const showCode = ref(false);
 const tab = ref(null);
 const propertiePanelStore = usePropertiePanelStore();
-const component = computed(() => propertiePanelStore.getComponentTemp);
+const element = computed(() => propertiePanelStore.getElementTemp);
 const codeTextId = "codeText";
 
 const alignment = 1;
@@ -100,26 +98,40 @@ onMounted(() => {
   });
 });
 
-const getComponetByType = (propertyValue) => {
+const getComponetByType = (type) =>
+({
+  string: ElementsETInputField,
+  number: ElementsETInputField,
+  boolean: ElementsETSwitch,
+  default: ElementsETInputField,
+}[type]);
+
+
+/*const getComponetByType = (propertyValue) => {
+  console.log(typeof propertyValue);
   switch (typeof propertyValue) {
     case "string":
-      return "v-text-field";
+      return "ETInputField";
     case "number":
-      return "v-text-field";
+      return "ETInputField";
     case "boolean":
-      return "v-switch";
+      return "ETSwitch";
     default:
-      return "v-text-field";
+      return "ETInputField";
   }
-};
+};*/
 
 const addComponent = (newComponent) => {
-  component.value.properties.components.push(newComponent);
+  element.value.properties.components.push(newComponent);
 };
 
 const changeWidth = (newWidth) => {
-  component.value.properties.width = newWidth;
-};*/
+  element.value.properties.width = newWidth;
+};
+
+const close = () => {
+  appStore.toggleShowProperties();
+};
 </script>
 
 <style lang="scss" scoped>

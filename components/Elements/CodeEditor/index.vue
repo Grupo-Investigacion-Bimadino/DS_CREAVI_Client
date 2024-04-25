@@ -5,7 +5,7 @@
         </v-col>
         <v-col cols="12" sm="12">
             <v-textarea label="JS" rows="7" variant="outlined" auto-grow shaped v-model="code"></v-textarea>
-        </v-col>        
+        </v-col>
         <v-row>
             <v-col cols="12" sm="12">
                 <ElementsList />
@@ -21,6 +21,22 @@ import { useElementStore } from "~/store/element";
 const elementStore = useElementStore();
 
 var codeTeplate = `{
+  "name": "Componente Select",
+  "type": "CSelect",
+  "properties": {
+    "label": "Texto del campo",
+    "multiple": false,
+    "items": [{ "text": "Opción 1", "value": "val_1" }],
+    "hint": "Frase informativa",
+    "persistent_hint": true,
+    "comments": [],
+    "v_model": "data",
+    "variant": "outlined",
+    "data": {}
+  },
+  "data": {}
+}`;
+/*`{
     "name": "p_element_3jsbrh64n",
     "version": "1.0.0",
     "type": "paragraph",
@@ -34,14 +50,14 @@ var codeTeplate = `{
     "createdBy": "jasuuenkaclaksdnaie766",
     "trunk": "maidaus8ashxlkcj8dasjc9da",
     "versions": ["maidaus8ashxlkcj8dasjc9da"]
-}`
+}`*/
 
 const code = ref(codeTeplate)
 
 const saveElement = async () => {
     try {
         const elementData = JSON.parse(code.value);
-        await elementStore.createElement(elementData);        
+        await elementStore.createElement(elementData);
     } catch (error) {
         console.error('Error parsing JSON:', error);
     }

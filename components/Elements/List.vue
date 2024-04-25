@@ -6,12 +6,12 @@
     </div>
 </template>
 <script setup>
+import { ref } from 'vue'
 import { useElementStore } from "~/store/element";
 
 const elementStore = useElementStore();
 const selectedElement = ref(null);
 
-import { ref } from 'vue'
 const items = ref([])
 
 watch(

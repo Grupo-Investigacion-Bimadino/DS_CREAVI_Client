@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="ma-3">
         <v-row no-gutters>
             <v-col cols="12" sm="6">
                 <ElementsCodeEditor v-model="code" />

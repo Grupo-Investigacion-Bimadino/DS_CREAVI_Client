@@ -1,5 +1,5 @@
 <template>
-    <v-app id="app">        
+    <v-app id="app">
         <MenuOptionsSide v-model="drawer" />
         <v-card elevation="0">
             <v-layout>
@@ -10,6 +10,7 @@
                     <v-btn icon="mdi-dots-vertical" variant="text"></v-btn>
                 </v-app-bar>
                 <v-main>
+                    <MenuOptionsAside />
                     <slot />
                 </v-main>
             </v-layout>
@@ -22,6 +23,7 @@
 <script setup>
 import { ref } from 'vue';
 const drawer = ref(false);
+
 onMounted(() => { });
 </script>
 <style></style>

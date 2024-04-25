@@ -21,7 +21,7 @@
 
 import { ref, onBeforeMount, computed } from "vue";
 import { useRoute } from "vue-router";
-import { useComponentStore } from "~/store/element";
+import { useElementStore } from "~/store/element";
 /*
 const pathAPI = "http://localhost:4000/api/v1/components/";
 const route = useRoute();

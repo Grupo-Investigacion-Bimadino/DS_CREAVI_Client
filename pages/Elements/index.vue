@@ -1,13 +1,13 @@
 <template>
-    <div>
+    <div class="ma-3">
         <v-row no-gutters>
-            <v-col cols="12" sm="4">
+            <v-col cols="12" sm="6">
                 <ElementsCodeEditor v-model="code" />
             </v-col>
             <v-col cols="12" sm="3">
                 Propiedades
             </v-col>
-            <v-col cols="12" sm="5">
+            <v-col cols="12" sm="3">
                 <ElementsRender :element="element" />
             </v-col>
         </v-row>
@@ -25,9 +25,6 @@ const elements = computed(() => elementStore.getStateElements);
 const code = ref('');
 const elementStore = useElementStore();
 
-onMounted(async () => {
-    // elements.value = await elementStore.getElements();
-    // element.value = await elementStore.getElement;
-})
+onMounted(async () => { })
 
 </script>

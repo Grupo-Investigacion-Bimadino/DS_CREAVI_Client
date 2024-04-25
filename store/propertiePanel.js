@@ -2,16 +2,16 @@ import { defineStore } from "pinia";
 export const usePropertiePanelStore = defineStore("propertiePanel", {
   state: () => {
     return {
-      componentTemp: {},
+      elementTemp: {},
     };
   },
   persist: true,
   getters: {
-    getComponentTemp: (state) => state.componentTemp,
+    getElementTemp: (state) => state.elementTemp,
   },
   actions: {
-    setComponentTemp(component) {
-      this.componentTemp = component;
-    },
+    setElementTemp(element) {
+      this.elementTemp = element;
+    }
   },
 });

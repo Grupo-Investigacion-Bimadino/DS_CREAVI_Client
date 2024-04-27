@@ -3,6 +3,7 @@
     <v-tabs v-model="tab" centered>
       <v-tab value="tab-1"> Propiedades </v-tab>
       <v-tab value="tab-2"> Componentes </v-tab>
+      <v-tab value="tab-3"> <v-icon>mdi-github</v-icon> </v-tab>
       <v-spacer></v-spacer>
       <v-btn size="small" icon="mdi-close" variant="text" class="ma-1" @click.stop="close"></v-btn>
     </v-tabs>
@@ -54,6 +55,7 @@
           <v-card-text>
             <div class="d-flex flex-column align-left">
               <v-btn-toggle mandatory>
+                Add buttons
                 <!--CBtnsBtnContent @onAddComponent="addComponent" />
                 <CBtnsBtCWidthComponent @onAddComponent="addComponent" /-->
               </v-btn-toggle>
@@ -61,6 +63,29 @@
           </v-card-text>
         </v-card>
       </v-window-item>
+      <v-window>
+        <v-window-item value="tab-3">
+          <v-card>
+            <v-card-title>
+              <v-icon>mdi-github</v-icon>
+              <span> Código fuente </span>
+            </v-card-title>
+            <v-card-text>
+              <v-row>
+                <v-col cols="12">
+                  <v-text-field label="Alignment" v-model="alignment" />
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Formatting" v-model="formatting" />
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Value" v-model="value" />
+                </v-col>
+              </v-row>
+            </v-card-text>
+          </v-card>
+        </v-window-item>
+      </v-window>
     </v-window>
   </div>
 </template>

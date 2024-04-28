@@ -1,4 +1,4 @@
-<template>    
+<template>
     <v-navigation-drawer temporary>
         <template v-slot:prepend>
             <v-list-item lines="two" prepend-avatar="https://avatars.githubusercontent.com/u/37457488?v=4"
@@ -11,7 +11,7 @@
             <v-list-item v-for="(item, i) in items" :prepend-icon="item.icon" :title="item.title" :value="item.value"
                 :to="item.to" :key="i" />
         </v-list>
-    </v-navigation-drawer>    
+    </v-navigation-drawer>
 </template>
 
 <script setup>
@@ -22,6 +22,25 @@ const items = ref([
         value: 'elements',
         to: "/elements",
         icon: 'mdi-view-dashboard'
+    },
+    {
+        title: 'Messages',
+        value: 'chats',
+        to: "/chat",
+        icon: 'mdi-chat'
+    },
+    {
+        title: 'Speech',
+        value: 'speech',
+        to: "/speech",
+        icon: 'mdi-microphone'
+
+    },
+    {
+        title: 'Version Control System',
+        value: 'vcs',
+        to: "/vcs",
+        icon: 'mdi-github'
     }
 ]);
 </script>

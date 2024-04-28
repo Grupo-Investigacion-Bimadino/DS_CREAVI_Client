@@ -7,6 +7,8 @@
                     <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
                     <v-toolbar-title>CREAVI</v-toolbar-title>
                     <v-spacer></v-spacer>
+                    <SocketBar :icon="'mdi-access-point'" :showId="false" :showIcon="true" />
+                    <SocketTest />
                     <v-btn icon="mdi-dots-vertical" variant="text"></v-btn>
                 </v-app-bar>
                 <v-main>

@@ -112,9 +112,9 @@ const propertiePanelStore = usePropertiePanelStore();
 const element = computed(() => propertiePanelStore.getElementTemp);
 const codeTextId = "codeText";
 
-const alignment = 1;
-const formatting = [];
-const value = "Toggle button requirements.\n\nHave at least three toggle buttons in a group\nLabel buttons with text, an icon, or";
+const alignment = ref(1);
+const formatting = ref([]);
+const value = ref("Toggle button requirements.\n\nHave at least three toggle buttons in a group\nLabel buttons with text, an icon, or");
 
 onMounted(() => {
   Prism.highlightAll();

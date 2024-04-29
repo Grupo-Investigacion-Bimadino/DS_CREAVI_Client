@@ -24,6 +24,7 @@ export const initSpeechRecognize = () => {
     speechRecognitionList.addFromString(grammar, 1);
     recognition.continuous = true;
     recognition.lang = lang.value;
+    recognition.grammars = speechRecognitionList;
 
     recognition.onresult = (event) => {
         console.log("onresult", event.results[0][0])

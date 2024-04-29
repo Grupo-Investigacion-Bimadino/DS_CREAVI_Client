@@ -31,12 +31,36 @@ const customDarkTheme = {
 };
 
 const customLightTheme = {
-    dark: false,
+    dark: false, // Tema claro
     colors: {
-        background: "#eee",
-        surface: "#15202b",
-        primary: "#3f51b5",
-        secondary: "#00ccff",
-        error: "#ffcc00",
+        // Fondo principal
+        background: '#f7f5f2', // Crema claro
+
+        // Superficie de componentes
+        surface: '#a1887f', // Marrón oscuro
+
+        // Color primario
+        primary: '#6d4c41', // Marrón chocolate
+
+        // Color secundario
+        secondary: '#c0a478', // Beige
+
+        // Color de error
+        error: '#d35400', // Rojo oscuro
+
+        // Texto primario
+        primaryText: '#323232', // Negro
+
+        // Texto secundario
+        secondaryText: '#979797', // Gris oscuro
+
+        // Texto de contraste
+        contrastText: '#ffffff', // Blanco
+
+        // Deshabilitado
+        disabled: '#e0e0e0', // Gris claro
+
+        // Divisor
+        divider: '#bdbdbd', // Gris claro
     },
 };

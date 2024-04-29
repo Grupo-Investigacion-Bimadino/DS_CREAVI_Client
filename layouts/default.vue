@@ -9,7 +9,7 @@
                     <v-spacer></v-spacer>
                     <SocketBar :icon="'mdi-access-point'" :showId="false" :showIcon="true" />
                     <SocketTest />
-                    <v-btn icon="mdi-dots-vertical" variant="text"></v-btn>
+                    <ModeToggleButton />
                 </v-app-bar>
                 <v-main>
                     <PanelPropertiesDialog />

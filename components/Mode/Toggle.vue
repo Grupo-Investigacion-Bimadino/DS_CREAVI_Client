@@ -1,11 +1,11 @@
 <template>
     <v-row no-gutters class="ma-1">
-        <v-col cols="5" class="align-self-center justify-center justify-center">
-            <v-icon>{{ themeSwitch.icon }}</v-icon>
-        </v-col>
         <v-col cols="5">
-            <v-switch v-model="themeSwitch.theme" :label="themeSwitch.name" @change="toggleTheme">
-            </v-switch>
+            <div class="d-flex flex-row ">
+                <v-icon class="ma-4">{{ themeSwitch.icon }}</v-icon>
+                <v-switch v-model="themeSwitch.theme" @change="toggleTheme" inset>
+                </v-switch>
+            </div>
         </v-col>
     </v-row>
 </template>
@@ -19,7 +19,7 @@ const theme = useTheme()
 const themeSwitch = reactive({
     name: theme.global.name.value,
     icon: theme.global.current.value.dark ? 'mdi-weather-night' : 'mdi-weather-sunny'
-})
+}) as any
 
 let { name, icon } = toRefs(themeSwitch)
 

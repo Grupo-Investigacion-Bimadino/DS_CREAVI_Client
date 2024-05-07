@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <v-app id="app">        
         <MenuOptionsSide v-model="drawer" />
         <v-card elevation="0">
             <v-layout>
@@ -18,7 +18,7 @@
             </v-layout>
             <Footer></Footer>
         </v-card>
-    </div>
+    </v-app>
 </template>
 <script setup>
 import { ref } from 'vue';

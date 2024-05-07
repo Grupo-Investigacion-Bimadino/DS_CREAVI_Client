@@ -13,23 +13,20 @@ export const useMiscellaneous = () => {
         versions: []
     }
 
-    const config = useRuntimeConfig();
-    const API_BASE_URL = config.public.API_BASE_URL;
-
-    const getElement = async (id: string) => {
+    const getElement = async (id: string, API_BASE_URL: string) => {        
         // ! desestructure fetch { data, refresh, pending } = await useFetch('/api/hello')        
         const response = await fetch(`${API_BASE_URL}/elements/${id}`);
         const data = await response.json();
         return data;
     }
 
-    const getElements = async () => {
+    const getElements = async (API_BASE_URL: string) => {        
         const response = await fetch(`${API_BASE_URL}/elements`);
         const data = await response.json();
         return data;
     }
 
-    const createElement = async (element: Element) => {
+    const createElement = async (element: Element, API_BASE_URL: string) => {        
         const response = await fetch(`${API_BASE_URL}/elements`, {
             method: 'POST',
             headers: {
@@ -41,7 +38,7 @@ export const useMiscellaneous = () => {
         return data;
     }
 
-    const updateElement = async (element: Element) => {
+    const updateElement = async (element: Element, API_BASE_URL: string) => {        
         const response = await fetch(`${API_BASE_URL}/elements/${element._id}`, {
             method: 'PUT',
             headers: {
@@ -53,7 +50,7 @@ export const useMiscellaneous = () => {
         return data;
     }
 
-    const deleteElement = async (id: string) => {
+    const deleteElement = async (id: string, API_BASE_URL: string) => {        
         const response = await fetch(`${API_BASE_URL}/elements/${id}`, {
             method: 'DELETE',
         });

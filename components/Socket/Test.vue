@@ -1,12 +1,12 @@
 <template>
-  <v-container>
+  <div>
     <v-btn icon="mdi-message" @click="testMessage">
-      <v-icon color="primary">mdi-message</v-icon>
+      <v-icon >mdi-message</v-icon>
     </v-btn>
     <v-tooltip activator="parent" location="bottom">
       {{ message }}
     </v-tooltip>
-  </v-container>
+  </div>
 </template>
 <script setup>
 import { ref, onMounted } from "vue";

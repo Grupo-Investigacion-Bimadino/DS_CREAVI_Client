@@ -1,5 +1,5 @@
 <template>
-    <v-app id="app">
+    <v-app id="app">        
         <MenuOptionsSide v-model="drawer" />
         <v-card elevation="0">
             <v-layout>
@@ -16,9 +16,7 @@
                     <slot />
                 </v-main>
             </v-layout>
-            <v-footer>
-                <div>{{ new Date().getFullYear() }} — <strong>CREAVI</strong></div>
-            </v-footer>
+            <Footer></Footer>
         </v-card>
     </v-app>
 </template>

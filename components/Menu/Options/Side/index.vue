@@ -42,6 +42,12 @@ const items = ref([
         value: 'vcs',
         to: "/vcs",
         icon: 'mdi-github'
+    },
+    {
+        title: 'Login',
+        value: 'login',
+        to: "/auth/login",
+        icon: 'mdi-login'
     }
 ]);
 </script>

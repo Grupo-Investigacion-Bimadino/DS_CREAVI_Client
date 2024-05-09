@@ -1,9 +1,6 @@
 import { defineStore } from "pinia";
-import { useMiscellaneous } from "~/composable/useMiscellaneous";
-const { getElement, getElements, createElement, updateElement, deleteElement } = useMiscellaneous();
-const config = useRuntimeConfig();
-const API_BASE_URL = config.public.API_BASE_URL;
-
+import { useElementMiscellaneous } from "~/composable/useElementMiscellaneous";
+const { getElement, getElements, createElement, updateElement, deleteElement } = useElementMiscellaneous();
 
 
 export const useElementStore = defineStore("element", {
@@ -16,16 +13,18 @@ export const useElementStore = defineStore("element", {
   },
   persist: true,
   getters: {
-    getElement: (state) => state.currentElement,
+    getElement: (state) => state.currentElement || {},
     getStateElements: (state) => state.elements,
   },
   actions: {
     async createElement(element:any) {
+      const API_BASE_URL = useRuntimeConfig().public.API_BASE_URL;
       let newElement = await createElement(element, API_BASE_URL);
       this.addElement(newElement);
       return newElement;
     },
     async getElements() {
+      const API_BASE_URL = useRuntimeConfig().public.API_BASE_URL;
       let elements = await getElements(API_BASE_URL);
       this.elements = elements;
       this.element = elements[0] || {};
@@ -37,8 +36,9 @@ export const useElementStore = defineStore("element", {
     setCurrentElement(element: any) {
       this.currentElement = element;
     },
-    getElementById(id: string) {
-      return this.elements.find((element) => element._id === id);
+    setDefaultElementById(id: string) {      
+      let element = this.elements.find((element) => element._id === id);
+      this.currentElement = element;      
     },
   },
 });

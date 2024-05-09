@@ -23,7 +23,8 @@ export default defineNuxtConfig({
         config.plugins.push(vuetify({ autoImport: true }))
       })
     },
-    'nuxt-twemoji'
+    'nuxt-twemoji',
+    '@nuxtjs/tailwindcss'    
   ],
   vite: {
     vue: {
@@ -42,5 +43,14 @@ export default defineNuxtConfig({
       SOCKET_URL: process.env.SOCKET_URL,
     },
   },
+  tailwindcss: {
+    cssPath: ['~/assets/css/tailwind.css', { injectPosition: "first" }],
+    configPath: 'tailwind.config',
+    exposeConfig: {
+      level: 2
+    },
+    config: {},
+    viewer: true,
+  }
 })
 

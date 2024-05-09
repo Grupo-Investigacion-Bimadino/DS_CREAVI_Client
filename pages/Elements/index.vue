@@ -1,14 +1,11 @@
 <template>
     <div class="ma-3">
         <v-row no-gutters>
-            <v-col cols="12" sm="6">
-                <ElementsCodeEditor v-model="code" />
-            </v-col>
-            <v-col cols="12" sm="3">
-                Propiedades
-            </v-col>
-            <v-col cols="12" sm="3">
+            <v-col cols="12">
                 <ElementsRender :element="element" />
+            </v-col>
+            <v-col cols="12">
+                <ElementsCodeEditor v-model="code" />
             </v-col>
         </v-row>
     </div>

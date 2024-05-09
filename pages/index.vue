@@ -16,6 +16,7 @@
         <Twemoji emoji="U+1F60A" />
         <!-- https://nuxt.com/modules/twemoji -->
         <!-- https://unicode.org/Public/emoji/15.1/emoji-test.txt -->
+        <TWSample />
 
     </div>
 </template>

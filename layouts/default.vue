@@ -1,5 +1,5 @@
 <template>
-    <v-app id="app">        
+    <v-app>
         <MenuOptionsSide v-model="drawer" />
         <v-card elevation="0">
             <v-layout>

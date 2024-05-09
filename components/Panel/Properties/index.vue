@@ -50,20 +50,20 @@
         </v-card>
       </v-window-item>
 
-      <v-window-item value="tab-2">
+      <!--v-window-item value="tab-2">
         <v-card max-width="600" class="mx-auto">
           <v-card-text>
             <div class="d-flex flex-column align-left">
               <v-btn-toggle mandatory>
-                Add buttons
+                Add buttons-->
                 <!--CBtnsBtnContent @onAddComponent="addComponent" />
                 <CBtnsBtCWidthComponent @onAddComponent="addComponent" /-->
-              </v-btn-toggle>
+              <!--/v-btn-toggle>
             </div>
           </v-card-text>
         </v-card>
-      </v-window-item>
-      <v-window>
+      </v-window-item-->
+      <!--v-window>
         <v-window-item value="tab-3">
           <v-card>
             <v-card-title>
@@ -85,7 +85,7 @@
             </v-card-text>
           </v-card>
         </v-window-item>
-      </v-window>
+      </v-window-->
     </v-window>
   </div>
 </template>

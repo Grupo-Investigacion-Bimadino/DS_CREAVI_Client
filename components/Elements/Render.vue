@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div v-if="element" class="btn-editor-container" @mouseenter="onShowProperties"
+        <!--div class="btn-editor-container" v-if="element" @mouseenter="onShowProperties"
             @mouseleave="isVisiblePanelButtons = false" v-bind="props">
-            <component :is="dynamicRenderElement(element.type)" :element="element" class="ma-1 pa-1" />
-            <PanelEditor v-if="isVisiblePanelButtons" :element="element" />
-        </div>
+            <component :is="dynamicRenderElement(element.type)" element="element" class="ma-1 pa-1" />
+            <PanelEditor v-if="isVisiblePanelButtons" :element="element"/>
+        </div-->
     </div>
 </template>
 <script setup>
@@ -41,6 +41,6 @@ const dynamicRenderElement = (type) =>
 }
 
 .btn-editor-container:hover {
-    background-color: rgb(245, 255, 250, 0.1);
+    background-color: rgb(255, 255, 194, 0.1);    
 }
 </style>

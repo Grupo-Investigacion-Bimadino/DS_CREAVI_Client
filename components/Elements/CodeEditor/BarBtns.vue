@@ -1,26 +1,22 @@
 <template>
   <v-card elevation="0">
     <div class="d-flex justify-space-between">
-      
-    <v-btn-toggle variant="outlined" divided>
-        <v-btn icon="mdi-content-save" @click="save"></v-btn>
-        <v-btn icon="mdi-restore" @click="reset"></v-btn>           
-    </v-btn-toggle>
-
-    <v-btn-toggle variant="outlined" divided>
-        <v-btn icon="mdi-format-paragraph"></v-btn>
-    </v-btn-toggle>
-    </div>    
+      <v-btn-toggle variant="outlined" divided >
+        <v-btn icon="mdi-note-plus" @click="newElement"></v-btn>
+        <v-btn icon="mdi-content-save" @click="saveElement"></v-btn>
+        <v-btn icon="mdi-restore"></v-btn>
+      </v-btn-toggle>      
+    </div>
   </v-card>
 </template>
 <script setup>
-const  emit  = defineEmits(['save', 'reset'])
+const emit = defineEmits(['saveElement', 'newElement'])
 
-const save = () => {
-  emit('save')
+const saveElement = () => {
+  emit('saveElement')
 }
 
-const reset = () => {
-  emit('reset')
+const newElement = () => {
+  emit('newElement')
 }
 </script>

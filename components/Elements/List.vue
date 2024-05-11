@@ -1,7 +1,6 @@
 <template>
-    <v-card class="mx-auto ma-3" max-width="300" variant="outlined">
-        --{{ elementDefault }}--
-        <v-list lines="one" v-model:selected="selectedElement" select-strategy="classic">
+    <v-card class="mx-auto ma-1" max-width="300" variant="outlined">
+        <v-list lines="one" v-model:selected="selectedElement">            
             <v-list-subheader>Componentes disponibles</v-list-subheader>
             <v-list-item v-for="(item, i) in items" :key="i" :value="item._id">
 
@@ -23,8 +22,6 @@ import { useElementStore } from "~/store/element";
 const elementStore = useElementStore();
 const selectedElement = ref(null);
 
-const elementDefault = ref(elementStore.getElement);
-
 const items = ref([])
 
 watch(
@@ -37,7 +34,7 @@ watch(
 )
 
 onMounted(async () => {
-    items.value = await elementStore.getElements();    
+    items.value = await elementStore.getElements();        
 })
 
 </script>

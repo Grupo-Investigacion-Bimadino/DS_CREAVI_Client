@@ -15,7 +15,10 @@ export default defineNuxtConfig({
     dirs: ['~/components']
   },
   modules: [
-    '@pinia/nuxt',
+    //[
+      '@pinia/nuxt', 
+    // {autoImports:[ 'defineStore',],disableVuex: false }
+    //],
     '@pinia-plugin-persistedstate/nuxt',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
@@ -24,8 +27,10 @@ export default defineNuxtConfig({
       })
     },
     'nuxt-twemoji',
-    '@nuxtjs/tailwindcss'    
+    '@nuxtjs/tailwindcss',
+    'nuxt-monaco-editor'
   ],
+  monacoEditor: { lang: 'es' },
   vite: {
     vue: {
       template: {

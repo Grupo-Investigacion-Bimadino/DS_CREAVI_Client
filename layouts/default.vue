@@ -1,6 +1,7 @@
 <template>
     <v-app>
         <MenuOptionsSide v-model="drawer" />
+        <PanelProperties v-model="appStore.getShowProperties" />
         <v-card elevation="0">
             <v-layout>
                 <v-app-bar elevation="0">
@@ -12,7 +13,6 @@
                     <ModeToggleButton />
                 </v-app-bar>
                 <v-main>
-                    <PanelPropertiesDialog />
                     <slot />
                 </v-main>
             </v-layout>
@@ -21,7 +21,12 @@
     </v-app>
 </template>
 <script setup>
+
+
+import { useAppStore } from "~/store/app";
 import { ref } from 'vue';
+
+const appStore = useAppStore();
 const drawer = ref(false);
 
 onMounted(() => { });

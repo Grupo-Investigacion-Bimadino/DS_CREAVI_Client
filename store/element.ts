@@ -30,8 +30,8 @@ export const useElementStore = defineStore("element", {
       return element;
     },
     async updateElement(element: any) {
+      console.log("element", element);
       this.currentElement = element;
-      // update on this.elements
       this.elements = this.elements.map((el) => {
         if (el._id === element._id) {
           return element;

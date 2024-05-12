@@ -42,18 +42,19 @@ const element = computed(() => elementStore.getElement);
 const dimension = ref({ width: 800, height: 400 });
 const lang = ref("json");
 const code = ref(JSON.stringify(element.value, null, 2));
-const elementTemplate = null;
+const elementTemplate = ref(null);
 
 const saveElement = async () => {
   try {
     const elementData = JSON.parse(code.value);
+    console.log("elementData:", elementData);
     await elementStore.createElement(elementData);
   } catch (error) {
     console.error("Error parsing JSON:", error);
   }
 };
 const newElement = () => {
-  code.value = "// ingrese su codigo aquí";
+  code.value = JSON.stringify({ ...elementTemplate.value }, null, 2);
 };
 
 watch(
@@ -66,11 +67,18 @@ watch(
 watch(
   () => code.value,
   (newValue) => {
-    elementStore.updateElement(JSON.parse(newValue));
+    if (newValue._id) elementStore.updateElement(JSON.parse(newValue));
   }
 );
 
-onMounted(async () => {});
+onMounted(async () => {
+  elementTemplate.value = await elementStore.getElementByName("template");
+
+  delete elementTemplate.value._id;
+  delete elementTemplate.value.createdAt;
+  delete elementTemplate.value.updatedAt;
+  delete elementTemplate.value.__v;
+});
 </script>
 
 <style></style>

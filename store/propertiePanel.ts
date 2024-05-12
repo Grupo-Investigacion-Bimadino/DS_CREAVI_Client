@@ -10,8 +10,8 @@ export const usePropertiePanelStore = defineStore("propertiePanel", {
     getElementTemp: (state) => state.elementTemp,
   },
   actions: {
-    setElementTemp(element) {
+    setElementTemp(element: any) {
       this.elementTemp = element;
-    }
+    },
   },
 });

@@ -28,7 +28,7 @@ import { ref } from 'vue';
 
 const appStore = useAppStore();
 const drawer = ref(false);
-const properties = ref(true);
+const properties = ref(false);
 
 const onCloseProperties = () => {
     properties.value = false;

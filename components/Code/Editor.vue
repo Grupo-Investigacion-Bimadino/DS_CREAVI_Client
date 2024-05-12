@@ -1,53 +1,53 @@
-<template>    
-    <v-card variant="outlined" class="editor ma-1 pa-1" >
-        <MonacoEditor :options="options" v-model="code" :lang="lang" />
-    </v-card>
+<template>
+  <v-card variant="outlined" class="editor ma-1 pa-1">
+    <MonacoEditor :options="options" v-model="code" :lang="lang" />
+  </v-card>
 </template>
 
 <script setup>
-
 const emit = defineEmits(["update", "update:code"]);
 
 const props = defineProps({
-    lang: {
-        type: String,
-        default: 'javascript'
-    },
-    dimension: {
-        type: Object,
-        default: () => ({ width: '100%', height: 'auto' }),
-    },
-    code: {
-        type: String,
-        default: ''
-    }
-
-})
-const code = ref(props.code)
+  lang: {
+    type: String,
+    default: "javascript",
+  },
+  dimension: {
+    type: Object,
+    default: () => ({ width: "100%", height: "auto" }),
+  },
+  code: {
+    type: String,
+    default: "",
+  },
+});
+const code = ref(props.code);
 
 const options = ref({
-    minimap: { enabled: false},
-    automaticLayout: true,
-    theme: 'vs-dark',
-    dimension: {
-        width: props.dimension.width || '100%',
-        height: props.dimension.height || 'auto', // Maintain flexibility
-    }
-})
+  minimap: { enabled: false },
+  automaticLayout: true,
+  theme: "vs-dark",
+  dimension: {
+    width: props.dimension.width || "100%",
+    height: props.dimension.height || "auto", // Maintain flexibility
+  },
+});
 
-watch(() => code.value, (value) => {
-    emit("update:code",  value)
-})
-
+watch(
+  () => code.value,
+  (value) => {
+    emit("update:code", value);
+  }
+);
 </script>
 <style scoped>
 .editor {
-    background-color: bisque;
+  background-color: rgb(255, 255, 255);
 }
 
 .editor-container {
-    display: flex;
-    flex-grow: 1; 
+  display: flex;
+  flex-grow: 1;
 }
 
 /* Optional responsive styles:

@@ -1,30 +1,49 @@
 <template>
-    <div>
-        <v-row class="pa-1 ma-1">
-            <v-col cols="12" sm="12">
-                <ElementsCodeEditorBarBtns @saveElement="saveElement" @newElement="newElement" />
-            </v-col>
-        </v-row>
-        <v-row class="pa-1 ma-1">
-            <v-col cols="12" sm="6">
-                <CodeEditor v-model:code="code" :code="code" :lang="lang" :dimension="dimension" />
-            </v-col>
-            <v-col cols="12" sm="6">
-                <v-row>
-                    <v-col cols="12" sm="6">
-                        <ElementsList />
-                    </v-col>
-                </v-row>
-            </v-col>
-        </v-row>
-    </div>
+  <div>
+    <v-row class="pa-1 ma-1">
+      <v-col cols="12" sm="2">
+        <ElementsList />
+      </v-col>
+      <v-col cols="12" sm="10">
+        <ElementsCodeEditorBarBtns
+          @saveElement="saveElement"
+          @newElement="newElement"
+        />
+      </v-col>
+    </v-row>
+
+    <v-row class="pa-1 ma-1">
+      <v-col cols="12" sm="7">
+        <div class="text-captiontext-body-1">
+          <p class="font-weight-black">Campos y propiedades del Elemento</p>
+        </div>
+        <CodeEditor
+          v-model:code="code"
+          :code="code"
+          :lang="lang"
+          :dimension="dimension"
+        />
+      </v-col>
+      <v-col cols="12" sm="5">
+        <div class="text-captiontext-body-1">
+          <p class="font-weight-black">
+            Previsualización del Elemento: {{ element.name }}:[{{
+              element.type
+            }}]
+          </p>
+        </div>
+        <ElementsRender :element="element" />
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 // Store methods
 import { useElementStore } from "~/store/element";
 const elementStore = useElementStore();
+const element = computed(() => elementStore.getElement);
 
 var codeTeplate = `{
   "name": "Parágrafo",
@@ -40,24 +59,22 @@ var codeTeplate = `{
   "data": {}
 }`;
 
-
 const code = ref(codeTeplate);
-const dimension = ref({width: 800, height: 400});
-const lang = ref('json');
+const dimension = ref({ width: 800, height: 400 });
+const lang = ref("json");
 
 const saveElement = async () => {
-    try {
-        console.log('code:', code.value);
-        const elementData = JSON.parse(code.value);
-        await elementStore.createElement(elementData);
-    } catch (error) {
-        console.error('Error parsing JSON:', error);
-    }
-}
+  try {
+    console.log("code:", code.value);
+    const elementData = JSON.parse(code.value);
+    await elementStore.createElement(elementData);
+  } catch (error) {
+    console.error("Error parsing JSON:", error);
+  }
+};
 const newElement = () => {
-    code.value = codeTeplate;
-}
-
+  code.value = codeTeplate;
+};
 </script>
 
 <style></style>

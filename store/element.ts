@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { useElementMiscellaneous } from "~/composable/useElementMiscellaneous";
-const { getElement, getElements, createElement, updateElement, deleteElement } = useElementMiscellaneous();
-
+const { getElement, getElements, createElement, updateElement, deleteElement } =
+  useElementMiscellaneous();
 
 export const useElementStore = defineStore("element", {
   state: () => {
@@ -17,7 +17,7 @@ export const useElementStore = defineStore("element", {
     getStateElements: (state) => state.elements,
   },
   actions: {
-    async createElement(element:any) {
+    async createElement(element: any) {
       const API_BASE_URL = useRuntimeConfig().public.API_BASE_URL;
       let newElement = await createElement(element, API_BASE_URL);
       this.addElement(newElement);
@@ -30,15 +30,16 @@ export const useElementStore = defineStore("element", {
       this.element = elements[0] || {};
       return elements;
     },
-    addElement(element : any) {
+    addElement(element: any) {
       this.elements.push(element);
     },
     setCurrentElement(element: any) {
       this.currentElement = element;
     },
-    setDefaultElementById(id: string) {      
+    setDefaultElementById(id: string) {
+      console.log("setDefaultElementById", id);
       let element = this.elements.find((element) => element._id === id);
-      this.currentElement = element;      
+      this.currentElement = element;
     },
   },
 });

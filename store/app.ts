@@ -4,7 +4,6 @@ export const useAppStore = defineStore("app", {
   state: () => {
     return {
       drawer: false,
-      //pasar a propertiePanel
       showProperties: false,
       PanelButtons: false,
     };
@@ -25,16 +24,16 @@ export const useAppStore = defineStore("app", {
     toggleShowProperties() {
       this.showProperties = !this.showProperties;
     },
-    setStatusProperties(value: boolean){    
+    setStatusProperties(value: boolean) {
       this.showProperties = value;
     },
     setShowProperties() {
       this.showProperties = true;
     },
-    hideProperties() {      
+    hideProperties() {
       this.showProperties = false;
     },
-    openProperties() {      
+    openProperties() {
       this.showProperties = true;
     },
     showPanelButtons() {

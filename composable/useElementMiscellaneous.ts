@@ -1,4 +1,4 @@
-export const useMiscellaneous = () => {
+export const useElementMiscellaneous = () => {
 
     interface Element {
         _id: string,
@@ -26,7 +26,7 @@ export const useMiscellaneous = () => {
         return data;
     }
 
-    const createElement = async (element: Element, API_BASE_URL: string) => {        
+    const createElement = async (element: Element, API_BASE_URL: string) => {               
         const response = await fetch(`${API_BASE_URL}/elements`, {
             method: 'POST',
             headers: {

@@ -52,8 +52,9 @@ export const useAuthStore = defineStore("auth", {
   actions: {
     
     login(credentials: Login) {
-      const runtimeConfig = useRuntimeConfig();
-      const API_BASE_URL = runtimeConfig.public.API_BASE_URL;    
+      // const runtimeConfig = useRuntimeConfig();
+      // const API_BASE_URL = runtimeConfig.public.API_BASE_URL;    
+      const API_BASE_URL = useRuntimeConfig().public.API_BASE_URL;
 
       return loginMis(credentials, API_BASE_URL).then((data: userResutl) => {
 
@@ -76,9 +77,10 @@ export const useAuthStore = defineStore("auth", {
       });      
     },
     signup(newUser: any) {
-      const runtimeConfig = useRuntimeConfig();
-      const API_BASE_URL = runtimeConfig.public.API_BASE_URL;
+      // const runtimeConfig = useRuntimeConfig();
+      // const API_BASE_URL = runtimeConfig.public.API_BASE_URL;
 
+      const API_BASE_URL = useRuntimeConfig().public.API_BASE_URL;
       return fetch(`${API_BASE_URL}/auth/signup`, {
         method: "POST",
         headers: {
@@ -102,8 +104,10 @@ export const useAuthStore = defineStore("auth", {
       this.token = null;
     },
     getUsers() {
-      const runtimeConfig = useRuntimeConfig();
-      const API_BASE_URL = runtimeConfig.public.API_BASE_URL;
+      // const runtimeConfig = useRuntimeConfig();
+      // const API_BASE_URL = runtimeConfig.public.API_BASE_URL;
+
+      const API_BASE_URL = useRuntimeConfig().public.API_BASE_URL;
       return fetch(`${API_BASE_URL}/users`, {
         headers: {
           Authorization: `Bearer ${this.token}`,

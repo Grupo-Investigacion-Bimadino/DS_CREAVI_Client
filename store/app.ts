@@ -25,8 +25,17 @@ export const useAppStore = defineStore("app", {
     toggleShowProperties() {
       this.showProperties = !this.showProperties;
     },
-    hideShowProperties() {
+    setStatusProperties(value: boolean){    
+      this.showProperties = value;
+    },
+    setShowProperties() {
+      this.showProperties = true;
+    },
+    hideProperties() {      
       this.showProperties = false;
+    },
+    openProperties() {      
+      this.showProperties = true;
     },
     showPanelButtons() {
       this.PanelButtons = true;

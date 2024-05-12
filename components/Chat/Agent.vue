@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <div class="text-center">
-      <VLayoutItem model-value position="bottom" class="text-end" size="88">
+      <VLayoutItem model-value position="top" class="text-end" size="88">
         <div class="ma-4">
           <VBtn icon="mdi-forum" size="large" :color="color" elevation="8" @click="sheet = !sheet">
           </VBtn>

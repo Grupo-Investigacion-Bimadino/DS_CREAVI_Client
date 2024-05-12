@@ -1,71 +1,102 @@
 <template>
-    <v-row class="pa-1 ma-1">
-        <v-col cols="12" sm="12">
-            <ElementsCodeEditorBarBtns @save="saveElement" @reset="reset" />
-        </v-col>
-        <v-col cols="12" sm="12">
-            <v-textarea label="JS" rows="7" variant="outlined" auto-grow shaped v-model="code"></v-textarea>
-        </v-col>
-        <v-row>
+    <div>
+        <v-row class="pa-1 ma-1">
             <v-col cols="12" sm="12">
-                <ElementsList />
+                <ElementsCodeEditorBarBtns @saveElement="saveElement" @newElement="newElement" />
             </v-col>
         </v-row>
-    </v-row>
+        <v-row class="pa-1 ma-1">
+            <v-col cols="12" sm="6">
+                <CodeEditor v-model:code="code" :code="code" :lang="lang" :dimension="dimension" />
+            </v-col>
+            <v-col cols="12" sm="6">
+                <v-row>
+                    <v-col cols="12" sm="6">
+                        <ElementsList />
+                    </v-col>
+                </v-row>
+            </v-col>
+        </v-row>
+    </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref } from 'vue'
 // Store methods
 import { useElementStore } from "~/store/element";
 const elementStore = useElementStore();
 
 var codeTeplate = `{
-  "name": "Componente Select",
-  "type": "CSelect",
+  "name": "Parágrafo",
+  "type": "paragraph",
   "properties": {
-    "label": "Texto del campo",
-    "multiple": false,
-    "items": [{ "text": "Opción 1", "value": "val_1" }],
-    "hint": "Frase informativa",
-    "persistent_hint": true,
-    "comments": [],
-    "v_model": "data",
-    "variant": "outlined",
-    "data": {}
+    "icon":"mdi-format-paragraph",
+    "class": ["pa-1 ma-1", "text-md", "text-justify"],
+    "text": "_lorem",
+    "disabled": false,
+    "describable": true,
+    "description": []
   },
   "data": {}
 }`;
-/*`{
-    "name": "p_element_3jsbrh64n",
-    "version": "1.0.0",
-    "type": "paragraph",
-    "properties": { 
-        "v_model":"data",
-        "disabled": "false",
-        "data": "Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
-    },
-    "data": { },
-    "components": [],
-    "createdBy": "jasuuenkaclaksdnaie766",
-    "trunk": "maidaus8ashxlkcj8dasjc9da",
-    "versions": ["maidaus8ashxlkcj8dasjc9da"]
-}`*/
 
-const code = ref(codeTeplate)
+
+const code = ref(codeTeplate);
+const dimension = ref({width: 800, height: 400});
+const lang = ref('json');
 
 const saveElement = async () => {
     try {
+        console.log('code:', code.value);
         const elementData = JSON.parse(code.value);
         await elementStore.createElement(elementData);
     } catch (error) {
         console.error('Error parsing JSON:', error);
     }
 }
-const reset = () => {
+const newElement = () => {
     code.value = codeTeplate;
 }
 
 </script>
 
 <style></style>
+<!--
+Input Text Field
+{
+  "name": "Input Text Field",
+  "type": "inputtextfield",
+  "properties": {
+    "class":[ "pa-1 ma-1", "text-md", "text-justify" ],
+    "label":"Nobre del campo",
+    "disabled":false,
+    "variant":"outlined",
+    "clearable":true,
+    "data":"",
+    "icon":"mdi-format-text",
+    "prepend-icon":"mdi-format-text",
+    "prepend-inner-icon":"mdi-form-textbox",
+    "append-icon":"mdi-form-textbox-password",
+    "prefix":"$",
+    "suffix":"lbs",
+    "type":"text",
+    "details":""    
+  },
+  "data": {}
+}
+
+Párrafo
+{
+  "name": "Parágrafo",
+  "type": "paragraph",
+  "properties": {
+    "icon":"mdi-format-paragraph",
+    "class": ["pa-1 ma-1", "text-md", "text-justify"],
+    "text": "_lorem",
+    "disabled": false,
+    "describable": true,
+    "description": []
+  },
+  "data": {}
+}
+-->

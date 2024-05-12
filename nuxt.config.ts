@@ -15,7 +15,10 @@ export default defineNuxtConfig({
     dirs: ['~/components']
   },
   modules: [
-    '@pinia/nuxt',
+    //[
+      '@pinia/nuxt', 
+    // {autoImports:[ 'defineStore',],disableVuex: false }
+    //],
     '@pinia-plugin-persistedstate/nuxt',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
@@ -23,8 +26,11 @@ export default defineNuxtConfig({
         config.plugins.push(vuetify({ autoImport: true }))
       })
     },
-    'nuxt-twemoji'
+    'nuxt-twemoji',
+    '@nuxtjs/tailwindcss',
+    'nuxt-monaco-editor'
   ],
+  monacoEditor: { lang: 'es' },
   vite: {
     vue: {
       template: {
@@ -42,5 +48,14 @@ export default defineNuxtConfig({
       SOCKET_URL: process.env.SOCKET_URL,
     },
   },
+  tailwindcss: {
+    cssPath: ['~/assets/css/tailwind.css', { injectPosition: "first" }],
+    configPath: 'tailwind.config',
+    exposeConfig: {
+      level: 2
+    },
+    config: {},
+    viewer: true,
+  }
 })
 

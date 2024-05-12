@@ -1,5 +1,6 @@
 <template>
-    <v-app id="app">        
+    <v-app>
+        <PanelProperties v-model="properties" @closeProperties="onCloseProperties"/>
         <MenuOptionsSide v-model="drawer" />
         <v-card elevation="0">
             <v-layout>
@@ -12,7 +13,6 @@
                     <ModeToggleButton />
                 </v-app-bar>
                 <v-main>
-                    <PanelPropertiesDialog />
                     <slot />
                 </v-main>
             </v-layout>
@@ -21,8 +21,28 @@
     </v-app>
 </template>
 <script setup>
+
+
+import { useAppStore } from "~/store/app";
 import { ref } from 'vue';
+
+const appStore = useAppStore();
 const drawer = ref(false);
+const properties = ref(true);
+
+const onCloseProperties = () => {
+    properties.value = false;
+    appStore.hideProperties();
+}
+
+watch(() => appStore.$state.showProperties, (value) => {
+    if (value) properties.value = value;
+});
+
+watch(() => properties.value, (value) => {    
+    if (!value) appStore.hideProperties();
+})
+
 
 onMounted(() => { });
 </script>

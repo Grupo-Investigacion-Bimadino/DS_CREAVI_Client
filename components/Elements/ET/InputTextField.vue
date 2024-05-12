@@ -1,0 +1,36 @@
+<template>
+    <v-text-field 
+    :class="combinedClasses" 
+    :label="element.properties.label" 
+    :disabled="element.properties.disabled"        
+    :variant="element.properties.variant" 
+    :clearable="element.properties.clearable"    
+    :v-model="element.properties.data" 
+    :prepend-icon="element.properties.prepend_icon"    
+    :prepend-inner-icon="element.properties.prepend_inner_icon" 
+    :append-icon="element.properties.append_icon"    
+    :prefix="element.properties.prefix" 
+    :suffix="element.properties.suffix" 
+    :type="element.properties.type"
+    :details="element.properties.details">
+    </v-text-field>
+</template>
+
+<script setup>
+const props = defineProps({
+    element: {
+        type: Object,
+        required: true,
+    },
+});
+
+const combinedClasses = computed(() => {
+    const classes = Array.isArray(props.element.properties.class)
+        ? props.element.properties.class
+        : [];
+    return classes.join(' ');
+});
+
+</script>
+
+<style></style>

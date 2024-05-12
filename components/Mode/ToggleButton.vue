@@ -21,7 +21,7 @@ import { useTheme } from 'vuetify'
 const theme = useTheme();
 const toggle_exclusive = ref(0);
 
-function toggleTheme(type) {
+function toggleTheme(type:any) {
     switch (type) {
         case 0:
             theme.global.name.value = 'light';

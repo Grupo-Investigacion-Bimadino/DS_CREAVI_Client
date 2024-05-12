@@ -1,13 +1,13 @@
 <template>
-    <v-navigation-drawer temporary>
+    <v-navigation-drawer temporary>        
         <template v-slot:prepend>
             <v-list-item lines="two" :prepend-avatar="user.picture" :to="'/profile'">
                 <template v-slot:default>
                     <v-list-item-title class="truncate">
                         <v-icon>{{userIcon(user.role)}}</v-icon>
-                         {{ user.username }}
+                        {{ user.username }}
                     </v-list-item-title>
-                    <v-list-item-subtitle class="truncate" :to="user.email">{{ user.email }}</v-list-item-subtitle>                    
+                    <v-list-item-subtitle class="truncate" :to="user.email">{{ user.email }}</v-list-item-subtitle>
                 </template>
             </v-list-item>
         </template>
@@ -16,7 +16,7 @@
             <v-list-item v-for="(item, i) in items" :prepend-icon="item.icon" :title="item.title" :value="item.value"
                 :to="item.to" :key="i" />
         </v-list>
-        <ModeToggle />
+        <ModeToggle />        
     </v-navigation-drawer>
 </template>
 
@@ -36,8 +36,6 @@ const userIcon = (role)=>(
         'student': 'mdi-account-edit'
     }
 )[role]
-
-
 
 const items = ref([
     {

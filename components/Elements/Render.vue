@@ -21,8 +21,7 @@ const props = defineProps({
     },
 });
 
-const onShowProperties = () => {
-    console.log('onShowProperties', props.element)
+const onShowProperties = () => {    
     propertiePanelStore.setElementTemp(props.element);
     isVisiblePanelButtons.value = true;
 };

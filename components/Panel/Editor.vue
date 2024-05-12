@@ -28,7 +28,7 @@ const props = defineProps({
 
 const updatePropertiesOnElementPanel = () => {
   appPropertiePannel.setElementTemp(props.element);
-  appStore.toggleShowProperties();
+  appStore.openProperties();
 };
 
 const saveChanges = async () => { };

@@ -1,13 +1,8 @@
 <template>
-    <v-row no-gutters class="ma-1">
-        <v-col cols="5">
-            <div class="d-flex flex-row ">
-                <v-icon class="ma-4">{{ themeSwitch.icon }}</v-icon>
-                <v-switch v-model="themeSwitch.theme" @change="toggleTheme" inset>
-                </v-switch>
-            </div>
-        </v-col>
-    </v-row>
+    <div class="d-flex flex-row">
+        <v-icon class="ma-4">{{ themeSwitch.icon }}</v-icon>
+        <v-switch v-model="datk" @change="toggleTheme"></v-switch>
+    </div>    
 </template>
 
 <script lang="ts" setup>
@@ -15,6 +10,7 @@ import { toRefs } from "vue"
 import { useTheme } from 'vuetify'
 
 const theme = useTheme()
+const datk = ref(theme.global.current.value.dark)
 
 const themeSwitch = reactive({
     name: theme.global.name.value,

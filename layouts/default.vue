@@ -1,7 +1,7 @@
 <template>
     <v-app>
+        <PanelProperties v-model="properties" @closeProperties="onCloseProperties"/>
         <MenuOptionsSide v-model="drawer" />
-        <PanelProperties v-model="appStore.getShowProperties" />
         <v-card elevation="0">
             <v-layout>
                 <v-app-bar elevation="0">
@@ -28,6 +28,21 @@ import { ref } from 'vue';
 
 const appStore = useAppStore();
 const drawer = ref(false);
+const properties = ref(true);
+
+const onCloseProperties = () => {
+    properties.value = false;
+    appStore.hideProperties();
+}
+
+watch(() => appStore.$state.showProperties, (value) => {
+    if (value) properties.value = value;
+});
+
+watch(() => properties.value, (value) => {    
+    if (!value) appStore.hideProperties();
+})
+
 
 onMounted(() => { });
 </script>

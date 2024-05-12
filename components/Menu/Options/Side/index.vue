@@ -37,8 +37,6 @@ const userIcon = (role)=>(
     }
 )[role]
 
-
-
 const items = ref([
     {
         title: 'Elementos',

@@ -23,7 +23,6 @@ import { useElementStore } from "~/store/element";
 import {
   PanelPropertiesFieldsInputText,
   PanelPropertiesFieldsSwitch,
-  PanelPropertiesFieldsArray,
   PanelPropertiesFieldsObject,
 } from "#components";
 const elementStore = useElementStore();

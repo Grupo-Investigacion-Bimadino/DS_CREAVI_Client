@@ -17,12 +17,7 @@
         <div class="text-captiontext-body-1">
           <p class="font-weight-black">Campos y propiedades del Elemento</p>
         </div>
-        <CodeEditor
-          v-model:code="code"
-          :code="code"
-          :lang="lang"
-          :dimension="dimension"
-        />
+        <CodeEditor v-model:code="code" :lang="lang" :dimension="dimension" />
       </v-col>
       <v-col cols="12" sm="5">
         <div class="text-captiontext-body-1">
@@ -44,28 +39,13 @@ import { ref } from "vue";
 import { useElementStore } from "~/store/element";
 const elementStore = useElementStore();
 const element = computed(() => elementStore.getElement);
-
-var codeTeplate = `{
-  "name": "Parágrafo",
-  "type": "paragraph",
-  "properties": {
-    "icon":"mdi-format-paragraph",
-    "class": ["pa-1 ma-1", "text-md", "text-justify"],
-    "text": "_lorem",
-    "disabled": false,
-    "describable": true,
-    "description": []
-  },
-  "data": {}
-}`;
-
-const code = ref(codeTeplate);
 const dimension = ref({ width: 800, height: 400 });
 const lang = ref("json");
+const code = ref(JSON.stringify(element.value, null, 2));
+const elementTemplate = null;
 
 const saveElement = async () => {
   try {
-    console.log("code:", code.value);
     const elementData = JSON.parse(code.value);
     await elementStore.createElement(elementData);
   } catch (error) {
@@ -73,8 +53,24 @@ const saveElement = async () => {
   }
 };
 const newElement = () => {
-  code.value = codeTeplate;
+  code.value = "// ingrese su codigo aquí";
 };
+
+watch(
+  () => elementStore.getElement,
+  (newValue) => {
+    code.value = JSON.stringify(newValue, null, 2);
+  }
+);
+
+watch(
+  () => code.value,
+  (newValue) => {
+    elementStore.updateElement(JSON.parse(newValue));
+  }
+);
+
+onMounted(async () => {});
 </script>
 
 <style></style>
@@ -115,5 +111,20 @@ Párrafo
     "description": []
   },
   "data": {}
+}
+
+Template de elemento
+{
+  "name": "Template de elemento",
+  "type": "default",
+  "properties": {
+    "data": "propiedad requerida",
+    "nombre propiedad":"valor de tipo [string, number, boolean, array, command]",    
+    "nombreCampoArray": ["valor 1", "valor 2", "valor 3"],
+    "nombreCampoComando": "_lorem",
+    "nombreCampoBooleano": true,
+    "nombreCampoString": "valor string",
+    "nombreCampoNumber": 1
+  }  
 }
 -->

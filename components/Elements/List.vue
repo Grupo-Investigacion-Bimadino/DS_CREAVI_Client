@@ -23,7 +23,6 @@ const items = ref([]);
 watch(
   () => selectedElement.value,
   async (newValue) => {
-    console.log("selectedElement:", newValue);
     if (newValue) {
       (await elementStore.setDefaultElementById(newValue._id)) || {};
     }

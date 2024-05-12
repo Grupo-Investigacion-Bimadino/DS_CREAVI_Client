@@ -1,7 +1,13 @@
 import { defineStore } from "pinia";
 import { useElementMiscellaneous } from "~/composable/useElementMiscellaneous";
-const { getElement, getElements, createElement, updateElement, deleteElement } =
-  useElementMiscellaneous();
+const {
+  getElement,
+  getElementByName,
+  getElements,
+  createElement,
+  updateElement,
+  deleteElement,
+} = useElementMiscellaneous();
 
 export const useElementStore = defineStore("element", {
   state: () => {
@@ -17,6 +23,25 @@ export const useElementStore = defineStore("element", {
     getStateElements: (state) => state.elements,
   },
   actions: {
+    async getElementByName(name: string) {
+      const API_BASE_URL = useRuntimeConfig().public.API_BASE_URL;
+      let element = await getElementByName(name, API_BASE_URL);
+      this.element = element;
+      return element;
+    },
+    async updateElement(element: any) {
+      this.currentElement = element;
+      // update on this.elements
+      this.elements = this.elements.map((el) => {
+        if (el._id === element._id) {
+          return element;
+        }
+        return el;
+      });
+      const API_BASE_URL = useRuntimeConfig().public.API_BASE_URL;
+      await updateElement(element, API_BASE_URL);
+      // ! return an value true or false
+    },
     async createElement(element: any) {
       const API_BASE_URL = useRuntimeConfig().public.API_BASE_URL;
       let newElement = await createElement(element, API_BASE_URL);
@@ -37,7 +62,6 @@ export const useElementStore = defineStore("element", {
       this.currentElement = element;
     },
     setDefaultElementById(id: string) {
-      console.log("setDefaultElementById", id);
       let element = this.elements.find((element) => element._id === id);
       this.currentElement = element;
     },

@@ -1,11 +1,23 @@
 <template>
   <div class="btn-editor" variant="outlined" color="grey-lighten-2">
-    <v-btn color="grey-lighten-2" icon class="elevation-0 rounded-lg ma-1 pa-1" size="x-small" variant="outlined"
-      @click.stop="updatePropertiesOnElementPanel">
+    <v-btn
+      color="grey-lighten-2"
+      icon
+      class="elevation-0 rounded-lg ma-1 pa-1"
+      size="x-small"
+      variant="outlined"
+      @click.stop="updatePropertiesOnElementPanel"
+    >
       <v-icon color="amber-darken-1">mdi-pencil</v-icon>
     </v-btn>
-    <v-btn color="grey-lighten-2" icon class="elevation-0 rounded-lg ma-1 pa-1" size="x-small" variant="outlined"
-      @click.stop="saveChanges">
+    <v-btn
+      color="grey-lighten-2"
+      icon
+      class="elevation-0 rounded-lg ma-1 pa-1"
+      size="x-small"
+      variant="outlined"
+      @click.stop="saveChanges"
+    >
       <v-icon color="green-darken-1">mdi-content-save</v-icon>
     </v-btn>
   </div>
@@ -25,13 +37,12 @@ const props = defineProps({
   },
 });
 
-
 const updatePropertiesOnElementPanel = () => {
   appPropertiePannel.setElementTemp(props.element);
   appStore.openProperties();
 };
 
-const saveChanges = async () => { };
+const saveChanges = async () => {};
 </script>
 
 <style>

@@ -17,12 +17,14 @@
   </div>
 </template>
 <script setup>
+// se adiciona el nuevo elemento
 import {
   ElementsETParagraph,
   ElementsETDefault,
   ElementsETSelect,
   ElementsETInputTextField,
   ElementsETCard,
+  ElementsETChip,
 } from "#components";
 import { usePropertiePanelStore } from "~/store/propertiePanel";
 
@@ -41,6 +43,7 @@ const onShowProperties = () => {
   isVisiblePanelButtons.value = true;
 };
 
+// se vincula el nuevo elemento
 const dynamicRenderElement = (type) =>
   ({
     card: ElementsETCard,
@@ -48,6 +51,7 @@ const dynamicRenderElement = (type) =>
     default: ElementsETDefault,
     select: ElementsETSelect,
     inputtextfield: ElementsETInputTextField,
+    chip: ElementsETChip,
   }[type]);
 </script>
 

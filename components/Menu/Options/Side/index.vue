@@ -93,6 +93,12 @@ const items = ref([
     to: "/auth/logout",
     icon: "mdi-logout",
   },
+  {
+    title: "Contenidos",
+    value: "content",
+    to: "/content",
+    icon: "mdi-view-dashboard",
+  },
 ]);
 </script>
 

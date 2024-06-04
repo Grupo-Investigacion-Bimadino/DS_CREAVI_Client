@@ -21,7 +21,7 @@
           />
           <SocketTest />
           <ModeToggleButton />
-          <Teams />
+          <!--Teams /-->
         </v-app-bar>
         <v-main>
           <slot />

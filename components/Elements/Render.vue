@@ -25,6 +25,15 @@ import {
   ElementsETInputTextField,
   ElementsETCard,
   ElementsETChip,
+  ElementsETButton,
+  ElementsETCheckbox,
+  ElementsETDivider,
+  ElementsETExpande,
+  ElementsETIcons,
+  ElementsETLists,
+  ElementsETSwitch,
+  ElementsETTable,
+  ElementsETTooltip,
 } from "#components";
 import { usePropertiePanelStore } from "~/store/propertiePanel";
 
@@ -52,6 +61,15 @@ const dynamicRenderElement = (type) =>
     select: ElementsETSelect,
     inputtextfield: ElementsETInputTextField,
     chip: ElementsETChip,
+    button: ElementsETButton,
+    checkbox: ElementsETCheckbox,
+    divider: ElementsETDivider,
+    expande: ElementsETExpande,
+    icon: ElementsETIcons,
+    list: ElementsETLists,
+    switch: ElementsETSwitch,
+    table: ElementsETTable,
+    tooltip: ElementsETTooltip,
   }[type]);
 </script>
 

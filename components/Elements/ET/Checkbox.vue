@@ -40,6 +40,7 @@
     :value="element.properties.value"
     :value-comparator="element.properties.value_comparator"
     :width="element.properties.width"
+		:class="combinedClasses(element.properties.class)"
   >
   </v-checkbox>
 </template>

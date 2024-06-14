@@ -1,7 +1,8 @@
 <template>
 	<v-tooltip
 		:activator="element.properties.activator"
-		:location="element.properties.location">
+		:location="element.properties.location"
+		:class="combinedClasses(element.properties.class)">
         {{ element.properties.data }}
 	</v-tooltip>
 </template>

@@ -4,7 +4,8 @@
 		:hide-default-footer="element.properties.hide_default_footer"
 		:hide-default-header="element.properties.hide_default_header"
 		:show-select="element.properties.show_select"
-		:group-by="element.properties.group_by">
+		:group-by="element.properties.group_by"
+		:class="combinedClasses(element.properties.class)">
 	</v-data-table>
 </template>
 

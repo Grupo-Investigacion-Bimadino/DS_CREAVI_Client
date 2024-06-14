@@ -4,6 +4,7 @@
     :prepend-icon="element.properties.prepend_icon"
     :append-icon="element.properties.append_icon"
     :variant="element.properties.variant"
+		:class="combinedClasses(element.properties.class)"
   >
     {{ element.properties.data }}
   </v-chip>

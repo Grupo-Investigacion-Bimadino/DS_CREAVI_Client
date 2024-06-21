@@ -9,17 +9,18 @@
     :disabled = "element.properties.disabled"
     :color = "element.properties.color"
     :elevation = "element.properties.elevation"
-    :border = "element.properties.border"
+    :border = "element.properties.border" 
     :block = "element.properties.block"
     :rounded = "element.properties.rounded"
-    :value = "element.properties.value"
+    :value = "element.properties.value" 
     :height = "element.properties.height"
     :width = "element.properties.width"
+		:class="combinedClasses(element.properties.class)"
     >
   Button
 </v-btn>
 </template>
-
+ 
 <script setup>
 	const props = defineProps({
 		element: {

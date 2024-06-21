@@ -4,7 +4,9 @@
 			:key="element.properties.key"
 			:title="element.properties.title"
 			:subtitle="element.properties.subtitle"
-			:prepend-avatar="element.properties.prepend_avatar"></v-list-item>
+			:prepend-avatar="element.properties.prepend_avatar"
+			:class="combinedClasses(element.properties.class)"
+			></v-list-item>
 	</v-list>
 </template>
 <script setup>

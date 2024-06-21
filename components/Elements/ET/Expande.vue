@@ -2,6 +2,7 @@
   <v-expansion-panels
     :multiple="element.properties.multiple"
     :readonly="element.properties.readonly"
+		:class="combinedClasses(element.properties.class)"
   >
     <v-expansion-panel
       :title="element.properties.title"

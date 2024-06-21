@@ -1,5 +1,6 @@
 <template>
-    <div class="ma-3">VCS Page
+    <div class="ma-3">
+    <Version_Control />
     </div>
 </template>
 
